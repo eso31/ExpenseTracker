@@ -26,6 +26,6 @@ test:
 
 production:
   <<: *default
-  database: exptracker_production
-  username: exptracker
+  database: <%= ENV['EXPTRACKER_DATABASE_NAME'] %>
+  username: <%= ENV['EXPTRACKER_DATABASE_USERNAME'] %>
   password: <%= ENV['EXPTRACKER_DATABASE_PASSWORD'] %>
