@@ -27,5 +27,5 @@ test:
 production:
   <<: *default
   database: exptracker_production
-  username: postgres
-  password: postgres
+  username: exptracker
+  password: <%= ENV['EXPTRACKER_DATABASE_PASSWORD'] %>
