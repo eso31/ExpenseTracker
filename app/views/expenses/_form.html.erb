@@ -1,0 +1,45 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= form_for(@expense, html: {role: "form"}) do |f| %>
+        <% if @expense.errors.any? %>
+            <div class="alert alert-danger alert-dismissable" role="alert">
+              <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4><%= pluralize(@expense.errors.count, "error") %> prohibited this course from being saved:</h4>
+
+              <ul>
+                <% @expense.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= f.label :category_id %>
+          <%= f.select :category_id, @categories.map { |c| [c.name, c.id] }, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :date %>
+          <%= f.date_select :date, required: true, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :amount%>
+          <%= f.text_field :amount, required: true, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.text_area :description, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <div class=" col-sm-10">
+            <%= f.submit class: "btn btn-primary" %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

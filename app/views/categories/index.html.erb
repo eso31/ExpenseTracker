@@ -1,0 +1,22 @@
+<%= link_to new_category_path do %>
+  New
+<% end %>
+
+<h1>index</h1>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |c| %>
+      <tr>
+        <td><%= c.name %></td>
+        <td><%= link_to 'Edit', edit_category_path(c.id) %></td>
+        <td><%= link_to 'Delete', c, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
