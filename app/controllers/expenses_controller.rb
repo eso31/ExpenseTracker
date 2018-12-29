@@ -39,6 +39,10 @@ class ExpensesController < ApplicationController
     redirect_to expenses_url
   end
 
+  def month_expenses
+    @current_month_expenses = Expense.get_current_month_expenses
+  end
+
   private
     def set_expense
       @expense = Expense.find(params[:id])
