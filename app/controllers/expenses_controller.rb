@@ -41,6 +41,11 @@ class ExpensesController < ApplicationController
 
   def month_expenses
     @current_month_expenses = Expense.get_current_month_expenses
+                                .sort_by { |k,v| -v }
+
+    @total_month_expenses = @current_month_expenses
+                                .map { |c,e| e }
+                                .inject(0){ |sum,x| sum + x }
   end
 
   private
