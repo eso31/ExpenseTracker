@@ -4,6 +4,9 @@ class ExpensesController < ApplicationController
 
   def index
     @expenses = Expense.all
+            .sort_by { |x| x.date }
+            .reverse
+            .group_by { |x| x.date }
   end
 
   def show

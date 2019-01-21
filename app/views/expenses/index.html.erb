@@ -11,10 +11,13 @@
       <th>Category</th>
       <th>Amount</th>
       <th>Description</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <% @expenses.each do |c| %>
+    <% @expenses.each do |k,v| %>
+      <% v.each do |c| %>
     <tr>
       <td><%= c.date %></td>
       <td><%= c.category.name %></td>
@@ -23,6 +26,15 @@
       <td><%= link_to 'Edit', edit_expense_path(c.id) %></td>
       <td><%= link_to 'Delete', c, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
+      <% end %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
     <% end %>
   </tbody>
 </table>
